@@ -1,5 +1,6 @@
 package com.engeto.ifloop;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
@@ -9,8 +10,7 @@ public class Main {
      * Ukázka použítí metody {@link Support#safeReadInt()}
      *
      * Tato metoda použije metodu {@link Support#safeReadInt() k načtení
-     * jednoho čísla od uživatele a vypsání tohoto čísla na výstup.
-     *
+     * jednoho čísla od uživatele a vypsání tohoto čísla na výstup.*
      * Podobně můžeš používat metodu {@link Support#safeReadInt()}
      * i v dalších metodách.
      */
@@ -24,10 +24,16 @@ public class Main {
     /**
      * Čte čísla, která zadává uživatel a vypisuje je na výstup.
      * Metoda pokračuje ve čtení opakovaně tak dlouho, dokud uživatel zadává kladná čísla či nulu.
-     * 
      * Jakmile uživatel zadá záporné číslo, metoda skončí.
      */
     public static void readIntsFromInputAndPrintItUntilNegative() {
+        int input = Support.safeReadInt();
+        String end = "You entered negative number";
+        while (input >= 0){
+            System.out.println("You entered: "+input);
+            input = Support.safeReadInt();
+        }
+        System.out.println(end);
     }
 
     /**
@@ -37,7 +43,17 @@ public class Main {
      * @return Součet všech zadaných čísel (záporné číslo ukončující vstup není zahrnuto).
      */
     public static int sumAllInputUntilNegative() {
-        return 0;
+        int input = Support.safeReadInt();
+        int result = 0;
+        String end = "You entered negative number";
+        while (input >= 0) {
+            result += input;
+            System.out.println("You entered: " + input);
+            System.out.println("Sum of numbers you entered so far: " + result);
+            input = Support.safeReadInt();
+        }
+        System.out.println(end);
+        return result;
     }
 
     /**
@@ -47,7 +63,13 @@ public class Main {
      * @return List načtených hodnot (záporná hodnota není zahrnuta v listu)
      */
     public static List<Integer> storeAllInputInArrayListUntilNegative() {
-        return null;
+        List<Integer> allNumbers = new ArrayList<>();
+        int input = Support.safeReadInt();
+        while (input >= 0) {
+            allNumbers.add(input);
+            input = Support.safeReadInt();
+        }
+        return allNumbers;
     }
 
     /**
@@ -55,6 +77,9 @@ public class Main {
      * @param list List čísel, která se mají vypsat.
      */
     public static void printAllIntegersFromList(List<Integer> list) {
+        for (int i : list){
+            System.out.println(i);
+        }
     }
 
     /**
@@ -63,7 +88,11 @@ public class Main {
      * @return Součet všech čísel v listu.
      */
     public static Integer sumAllIntegersFromList(List<Integer> list) {
-        return null;
+        int sum = 0;
+        for (int i : list){
+            sum += i;
+        }
+        return sum;
     }
     //endregion
 
@@ -74,6 +103,12 @@ public class Main {
      * @param limit Limit - vypsána budou pouze čísla z listu, která jsou menší než limit
      */
     public static void printIntegersUnderLimit(List<Integer> list, int limit) {
+        if (list.size() >= limit) {
+            for (int i = 0; i < limit; i++) {
+                System.out.println(list.get(i));
+            }
+        }
+        System.out.println("There is less numbers in the list than limit.");
     }
 
     /**
@@ -88,6 +123,17 @@ public class Main {
      * @param list Seznam čísel, která se mají vypsat.
      */
     public static void printIntegersWithReplace(List<Integer> list) {
+        for (Integer item : list){
+            if (item == 1){
+                System.out.println("one");
+            } else if (item == 2) {
+                System.out.println("two");
+            } else if (item == 3) {
+                System.out.println("three");
+            } else {
+                System.out.println(item);
+            }
+        }
     }
     //endregion
 
