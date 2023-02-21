@@ -21,11 +21,13 @@ public class Main {
     //endregion
 
     //region Úlohy na cykly
+
     /**
      * Čte čísla, která zadává uživatel a vypisuje je na výstup.
      * Metoda pokračuje ve čtení opakovaně tak dlouho, dokud uživatel zadává kladná čísla či nulu.
      * Jakmile uživatel zadá záporné číslo, metoda skončí.
      */
+    //OPTION 1:
     public static void readIntsFromInputAndPrintItUntilNegative() {
         int input = Support.safeReadInt();
         String end = "You entered negative number";
@@ -36,12 +38,24 @@ public class Main {
         System.out.println(end);
     }
 
+    //OPTION 2:
+    /**
+    public static void readIntsFromInputAndPrintItUntilNegative(){
+        String end = "you entered negative number";
+        for (int input = Support.safeReadInt(); input >= 0; input = Support.safeReadInt()){
+            System.out.println("You entered: "+input);
+        }
+        System.out.println(end);
+    }
+     */
+
     /**
      * Čte čísla ze vstupu tak dlouho, dokud uživatel nezadá záporné číslo.
      * Jako návratovou hodnotu vrátí součet zadaných čísel (záporné číslo by nemělo být zahrnuto).
      * 
      * @return Součet všech zadaných čísel (záporné číslo ukončující vstup není zahrnuto).
      */
+    //OPTION 1:
     public static int sumAllInputUntilNegative() {
         int input = Support.safeReadInt();
         int result = 0;
@@ -56,29 +70,63 @@ public class Main {
         return result;
     }
 
+    //OPTION 2:
     /**
+    public static int sumAllInputUntilNegative(){
+        int input;
+        int result = 0;
+        String end = "You entered negative number";
+        while (true){
+            input = Support.safeReadInt();
+            if (input < 0){
+                System.out.println(end);
+                break;
+            } else {
+                result += input;
+                System.out.println("You entered: " + input);
+                System.out.println("Sum of numbers you entered so far: " + result);
+            }
+        }
+        return result;
+    }
+     */
+
+     /**
      * Čte čísla ze vstupu tak dlouho, dokud uživatel nezadá záporné číslo.
      * Všechna načtená čísla uloží do listu, který vrátí jako návratovou hodnotu.
      * 
      * @return List načtených hodnot (záporná hodnota není zahrnuta v listu)
      */
-    public static List<Integer> storeAllInputInArrayListUntilNegative() {
+
+    //OPTION 1:
+     public static List<Integer> storeAllInputInArrayListUntilNegative() {
         List<Integer> allNumbers = new ArrayList<>();
         int input = Support.safeReadInt();
         while (input >= 0) {
             allNumbers.add(input);
+            System.out.println("You add "+ input+" into the list.");
             input = Support.safeReadInt();
         }
         return allNumbers;
     }
+    //OPTION 2:
+    /**
+    public static List<Integer> storeAllInputInArrayListUntilNegative() {
+        List<Integer> allNumbers = new ArrayList<>();
+        for (int i = Support.safeReadInt(); i >= 0; i=Support.safeReadInt()){
+            allNumbers.add(i);
+        }
+        return allNumbers;
+    }
+     */
 
     /**
      * Dostane jako parametr list čísel. Vypíše čísla na obrazovku. Každé číslo vypiš na samostatný řádek.
      * @param list List čísel, která se mají vypsat.
      */
     public static void printAllIntegersFromList(List<Integer> list) {
-        for (int i : list){
-            System.out.println(i);
+        for (int item : list){
+            System.out.println(item);
         }
     }
 
@@ -89,8 +137,8 @@ public class Main {
      */
     public static Integer sumAllIntegersFromList(List<Integer> list) {
         int sum = 0;
-        for (int i : list){
-            sum += i;
+        for (int item : list){
+            sum += item;
         }
         return sum;
     }
