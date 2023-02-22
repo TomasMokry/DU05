@@ -38,17 +38,6 @@ public class Main {
         System.out.println(end);
     }
 
-    //OPTION 2:
-    /**
-    public static void readIntsFromInputAndPrintItUntilNegative(){
-        String end = "you entered negative number";
-        for (int input = Support.safeReadInt(); input >= 0; input = Support.safeReadInt()){
-            System.out.println("You entered: "+input);
-        }
-        System.out.println(end);
-    }
-     */
-
     /**
      * Čte čísla ze vstupu tak dlouho, dokud uživatel nezadá záporné číslo.
      * Jako návratovou hodnotu vrátí součet zadaných čísel (záporné číslo by nemělo být zahrnuto).
@@ -109,16 +98,6 @@ public class Main {
         }
         return allNumbers;
     }
-    //OPTION 2:
-    /**
-    public static List<Integer> storeAllInputInArrayListUntilNegative() {
-        List<Integer> allNumbers = new ArrayList<>();
-        for (int i = Support.safeReadInt(); i >= 0; i=Support.safeReadInt()){
-            allNumbers.add(i);
-        }
-        return allNumbers;
-    }
-     */
 
     /**
      * Dostane jako parametr list čísel. Vypíše čísla na obrazovku. Každé číslo vypiš na samostatný řádek.
